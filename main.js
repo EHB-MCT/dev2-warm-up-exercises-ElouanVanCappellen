@@ -41,22 +41,9 @@ function warmup2() {
     console.log("Exercise week 2");
     let scores = getRandomScores(10);
 
-    document.getElementById("button-2b").addEventListener('click', function () {
+    document.getElementById("button-2a").addEventListener('click', showScores);
 
-        scores = scores.sort(function (a, b) {
-            if (a > b) {
-                return 1
-            } else {
-                return -1
-            }
-        })
-        console.log(scores);
-
-
-
-    });
-
-    document.getElementById("button-2a").addEventListener('click', function () {
+    function showScores() {
         //    luister naar button 2a 
         let HTMLCode = '<ul>';
         // maken in een string
@@ -74,17 +61,44 @@ function warmup2() {
         // kan ook niet ideeaal
 
         document.getElementById("content-2").innerHTML = HTMLCode;
+
+    }
+
+    document.getElementById("button-2b").addEventListener('click', function () {
+
+        scores = scores.sort(function (a, b) {
+            if (a > b) {
+                return 1
+            } else {
+                return -1
+            }
+        })
+        console.log(scores);
+
+        showScores();
+
+
+        document.getElementById("button-2c").addEventListener('click', function () {
+
+
+
+            const newElement = document.createElement("h1");
+            console.log("button 3 has been pressed!!!")
+
+            const sum = scores.reduce(function (total, current) {
+                return total + current;
+            })
+
+            newElement.innerHTML = "Som scores: " + sum;
+            console.log(sum);
+
+
+            document.getElementById("content-2").append(newElement);
+
+        })
+
     });
 
-
-
-
-
-    document.getElementById("button-3b").addEventListener('click', function () {
-
-
-
-    });
 }
 
 function warmup3() {
