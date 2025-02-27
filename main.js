@@ -7,6 +7,8 @@ import {
 runTitle();
 warmup1();
 warmup2();
+warmup3();
+
 
 function warmup1() {
     console.log("Exercise week 1");
@@ -102,7 +104,31 @@ function warmup2() {
 }
 
 function warmup3() {
+    // "het resultaat van de JSON is al ingevoerd in een variabele"
     let student = getStudentJSON();
+    document.getElementById("button-3a").addEventListener('click', function () {
+        // log student JSON
+        // hier voeg je de var in in de plaats van de functie. als je de functie wil loggen dat word gexporteerd.
+        // wat ook zou kunnen is:  console.log(getStudentJSON());
+        console.log(student);
+        // parse JSON
+        let getStudentObject = JSON.parse(student);
+        // log student JSON
+        console.log(getStudentObject);
+
+
+    })
+
+    document.getElementById("button-3b").addEventListener('click', function () {
+
+        // door de scope van het vorig object moeten we de JSON nogmaals parsen. Dit is een gevolg van het gebruiken van een blinde functie.
+        let getStudentObject = JSON.parse(student);
+
+
+
+        document.getElementById("content-3").innerHTML = `<h2>${getStudentObject.name}</h2>`;
+
+    })
 }
 
 function warmup4() {
