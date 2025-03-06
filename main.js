@@ -8,7 +8,7 @@ runTitle();
 warmup1();
 warmup2();
 warmup3();
-
+warmup4();
 
 function warmup1() {
     console.log("Exercise week 1");
@@ -133,6 +133,39 @@ function warmup3() {
 
 function warmup4() {
     let main, min, max;
+
+    document.getElementById("button-4a").addEventListener('click', function () {
+
+        fetch('http://api.openweathermap.org/data/2.5/weather?q=Brussels&APPID=d7b955c4c268fe54649d6f0d702b39d1&units=metric')
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(function (data) {
+                console.log('Parsed JSON response:', data);
+                main = data.main.temp;
+                min = data.main.temp_min;
+                max = data.main.temp_max;
+                document.getElementById("button-4b").addEventListener('click', function () {
+                    showTemps(main, min, max);
+                })
+            })
+            .catch(function (error) {
+                console.error('Error fetching data:', error);
+            });
+
+    });
+
+    function showTemps(main, min, max) {
+        document.getElementById("content-4").innerHTML =
+            `
+            <h2>Temp:${main}</h2>
+            <h2>Min temp:${min}</h2>
+            <h2>Max temp:${max}</h2>
+            `
+    }
 }
 
 function warmup5() {
