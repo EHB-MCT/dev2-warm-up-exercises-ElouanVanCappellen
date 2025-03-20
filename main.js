@@ -4,11 +4,14 @@ import {
     runTitle
 } from './lib.js';
 
+import Student from './Student.js';
+
 runTitle();
 warmup1();
 warmup2();
 warmup3();
 warmup4();
+warmup5();
 
 function warmup1() {
     console.log("Exercise week 1");
@@ -170,12 +173,26 @@ function warmup4() {
 
 function warmup5() {
 
+    document.getElementById("button-5a").addEventListener('click', function () {
+        console.log("button pressed!");
+        const elouan = new Student("Elouan", "19", Math.floor(Math.random() * 10));
+        console.log(elouan);
+
+        document.getElementById("button-5b").addEventListener('click', function () {
+
+            document.getElementById("content-5").innerHTML = `
+            
+                    <h2>name: ${elouan._name}</h2>
+                    <h2>age: ${elouan._age}</h2>
+                    <h2>score: ${elouan._score}</h2>
+                `
+        })
+    })
+
+
+
 }
 
-// export const getRandomScores = (amount) => {
-//     const scores = [];
-//     for (let i = 0; i < amount; i++) {
-//         scores.push(Math.round(Math.random() * 20));
-//     }
-//     return scores;
-// }
+// <div id="content-5" class="content">
+//                 <p>Let's start session 5</p>
+//             </div>
